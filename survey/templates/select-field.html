@@ -1,0 +1,14 @@
+<div class="field">
+    <label class="label">
+        {{ title }}
+    </label>
+    <div class="control">
+        <label class="select">
+            <select>
+                {% for item in items %}
+                    <option>{{ item }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+</div>

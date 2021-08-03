@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container is-max-desktop">
+        <form class="box m-3">
+            <h1 class="title">
+                설문조사
+            </h1>
+            {% include 'select-field.html' with title="드롭다운" items="가나다"|make_list %}
+            {% include 'radio-field.html' with title="라디오 버튼" items="가나다"|make_list %}
+            {% include 'checkbox-field.html' with title="다중 선택" items="가나다"|make_list %}
+            {% include 'custom-input-field.html' with title="직접 입력" placeholder="입력해주세요." %}
+        </form>
+    </div>
+{% endblock %}
