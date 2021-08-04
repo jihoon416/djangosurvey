@@ -1,0 +1,18 @@
+<div class="field">
+    <label class="label">
+        {{ title }}
+        {% if required == True %}
+            *
+        {% endif %}
+    </label>
+    <div class="control">
+        <label class="select">
+            <select required={{ required }} name="{{ name }}">
+                <option value="" disabled selected>{{ placeholder }}</option>
+                {% for item in items %}
+                    <option value={{ item.id }}>{{ item }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+</div>

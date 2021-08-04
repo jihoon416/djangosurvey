@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container is-max-desktop">
+        <form class="box m-3" method="post">
+            {% csrf_token %}
+            <h1 class="title">
+                {{ survey.title }}
+            </h1>
+            {% for question in survey.surveyquestion_set.all %}
+                {% if question.type == 'SELECT' %}
+                    {% include 'select-field.html' with title=question.topic name=question.id items=question.option_set.all required=question.required %}
+                {% endif %}
+                {% if question.type == 'RADIO' %}
+                    {% include 'radio-field.html' with title=question.topic name=question.id items=question.option_set.all required=question.required %}
+                {% endif %}
+                {% if question.type == 'CHECKBOX' %}
+                    {% include 'checkbox-field.html' with title=question.topic name=question.id items=question.option_set.all required=question.required %}
+                {% endif %}
+            {% endfor %}
+            {% include 'input-tel-field.html' with title="전화번호 입력" placeholder="010-0000-0000" required=True %}
+            <div class="field mt-5">
+                <div class="control is-flex is-justify-content-end">
+                    <button class="button is-link" type="submit">
+                        제출
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% if error %}
+        <div class="notification is-danger is-light mx-6">
+            <button class="delete"></button>
+            {{ error }}
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                    const $notification = $delete.parentNode;
+                    $delete.addEventListener('click', () => {
+                        $notification.parentNode.removeChild($notification);
+                    });
+                });
+            });
+        </script>
+    {% endif %}
+{% endblock %}
