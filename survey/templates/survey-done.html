@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ survey.title }} 완료
+{% endblock %}
+
+{% block content %}
+    <section class="hero is-fullheight is-info">
+        <div class="hero-body">
+            <div class="">
+                <p class="title">
+                    {{ survey.title }} 완료
+                </p>
+                <p class="subtitle">
+                    수고하셨습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,7 +1,7 @@
 from typing import List
 
 from django.http import HttpRequest
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from survey.models import *
 
@@ -45,6 +45,12 @@ def survey(request: HttpRequest, survey_id: int):
             response_options = question_response_dict[question_id][1]
             response.selected_options.add(*response_options)
             response.save()
+        return redirect(survey_done, survey_id=survey_id)
 
     else:
         return render(request, 'survey.html', {'survey': selected_survey})
+
+
+def survey_done(request: HttpRequest, survey_id: int):
+    selected_survey = Survey.objects.get(id=survey_id)
+    return render(request, 'survey-done.html', {'survey': selected_survey})
