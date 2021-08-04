@@ -6,10 +6,11 @@
             <h1 class="title">
                 설문조사
             </h1>
-            {% include 'select-field.html' with title="드롭다운" items="가나다"|make_list %}
-            {% include 'radio-field.html' with title="라디오 버튼" items="가나다"|make_list %}
+            {% include 'select-field.html' with title="드롭다운" items="가나다"|make_list placeholder="선택해주세요" required=True %}
+            {% include 'radio-field.html' with title="라디오 버튼" items="가나다"|make_list required=True %}
             {% include 'checkbox-field.html' with title="다중 선택" items="가나다"|make_list %}
-            {% include 'custom-input-field.html' with title="직접 입력" placeholder="입력해주세요." %}
+            {% include 'input-tel-field.html' with title="전화번호 입력" placeholder="010-0000-0000" required=True %}
+            <button type="submit">Submit</button>
         </form>
     </div>
 {% endblock %}

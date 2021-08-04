@@ -1,0 +1,11 @@
+<div class="field">
+    <label class="label">
+        {{ title }}
+        {% if required == True %}
+            *
+        {% endif %}
+    </label>
+    <label class="control">
+        <input class="input" type="tel" placeholder={{ placeholder }} required={{ required }}>
+    </label>
+</div>

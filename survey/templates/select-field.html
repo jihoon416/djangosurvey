@@ -1,10 +1,14 @@
 <div class="field">
     <label class="label">
         {{ title }}
+        {% if required == True %}
+            *
+        {% endif %}
     </label>
     <div class="control">
         <label class="select">
-            <select>
+            <select required={{ required }}>
+                <option value="" disabled selected>{{ placeholder }}</option>
                 {% for item in items %}
                     <option>{{ item }}</option>
                 {% endfor %}
