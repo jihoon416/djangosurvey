@@ -7,10 +7,10 @@
     </label>
     <div class="control">
         <label class="select">
-            <select required={{ required }}>
+            <select required={{ required }} name="{{ name }}">
                 <option value="" disabled selected>{{ placeholder }}</option>
                 {% for item in items %}
-                    <option>{{ item }}</option>
+                    <option value={{ item.id }}>{{ item }}</option>
                 {% endfor %}
             </select>
         </label>

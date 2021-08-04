@@ -8,7 +8,7 @@
     {% for item in items %}
         <div class="control">
             <label class="radio">
-                <input type="radio" name={{ title }} required={{ required }}>
+                <input type="radio" value={{ item.id }} name="{{ name }}" required={{ required }}>
                 {{ item }}
             </label>
         </div>
