@@ -28,4 +28,21 @@
             </div>
         </form>
     </div>
+
+    {% if error %}
+        <div class="notification is-danger is-light mx-6">
+            <button class="delete"></button>
+            {{ error }}
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                    const $notification = $delete.parentNode;
+                    $delete.addEventListener('click', () => {
+                        $notification.parentNode.removeChild($notification);
+                    });
+                });
+            });
+        </script>
+    {% endif %}
 {% endblock %}
