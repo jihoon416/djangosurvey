@@ -15,7 +15,7 @@
                     {% include 'radio-field.html' with title=question.topic name=question.id items=question.option_set.all required=question.required %}
                 {% endif %}
                 {% if question.type == 'CHECKBOX' %}
-                    {% include 'checkbox-field.html' with title=question.topic name=question.id items=question.option_set.all %}
+                    {% include 'checkbox-field.html' with title=question.topic name=question.id items=question.option_set.all required=question.required %}
                 {% endif %}
             {% endfor %}
             {% include 'input-tel-field.html' with title="전화번호 입력" placeholder="010-0000-0000" required=True %}

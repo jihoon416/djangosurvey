@@ -20,10 +20,16 @@ def survey(request: HttpRequest, survey_id: int):
                 continue
 
             question = SurveyQuestion.objects.get(id=name)
+
             if len(option_list) > question.choice_limit:
                 return render(request, 'survey.html', {
                     'survey': selected_survey,
                     'error': f'선택 가능한 숫자를 넘었습니다. (문항: {question.topic})',
+                })
+            if question.required and len(option_list) < 1:
+                return render(request, 'survey.html', {
+                    'survey': selected_survey,
+                    'error': f'필수 선택 문항이 입력되지 않았습니다. (문항: {question.topic})',
                 })
 
             def get_options(option_id_list: List[str]):

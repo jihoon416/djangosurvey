@@ -1,6 +1,9 @@
 <div class="field">
     <label class="label">
         {{ title }}
+        {% if required == True %}
+            *
+        {% endif %}
     </label>
     {% for item in items %}
         <div class="control">
