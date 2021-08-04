@@ -35,6 +35,7 @@ class Option(models.Model):
 class SurveyResponse(models.Model):
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     questions = models.ManyToManyField(SurveyQuestion)
+    phone_number = models.CharField(max_length=15)
 
 
 class SurveyQuestionResponse(models.Model):
